@@ -1,0 +1,6 @@
+{
+  "as3mxml.sdk.framework": "/Users/aliaburas/Documents/AS3.0/airsdk/AIRSDK_51.2.2",
+  // Optional: set your JDK if needed (11–17)
+  // "as3mxml.java.home": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
+  "as3mxml.wiki.enabled": false
+}

@@ -1,0 +1,15 @@
+// {
+//   "config": "air",
+//   "compilerOptions": {
+//     "source-path": ["src"],
+//     "output": "bin/App.swf"
+//   },
+//   "mainClass": "com.aliaburas.app.Main"
+// }
+
+
+{
+"config": "air",
+"compilerOptions": { "source-path": ["src"], "output": "bin/App.swf" },
+"mainClass": "src.com.Main"
+}
