@@ -41,7 +41,9 @@ package com {
 
         private function resizeElement(e:Event):void {
             if (rect)
-                TweenLite.to(rect, 0.5, {x: (stage.stageWidth - rect.width) * 0.5, y: (stage.stageHeight - rect.height) * 0.5, ease: CircIn})
+                TweenLite.to(rect, 0.5, {alpha: 0.5, x: (stage.stageWidth - rect.width) * 0.5, y: (stage.stageHeight - rect.height) * 0.5, ease: CircIn, onComplete: function():void {
+                    TweenLite.to(rect, 0.2, {alpha: 1})
+                }})
 
         }
 
