@@ -11,11 +11,13 @@ package com {
     import com.greensock.easing.BounceIn;
     import com.greensock.easing.Elastic;
     import com.greensock.easing.CircIn;
+    import flash.utils.setTimeout;
+    import flash.geom.Rectangle;
 
     public class Main extends Sprite {
 
         private var console:Console;
-        private var rect:Shape;
+        private var rect:Sprite;
 
         public function Main() {
             super();
@@ -33,11 +35,32 @@ package com {
             stage.addEventListener(Event.RESIZE, resizeElement);
             stage.addEventListener(MouseEvent.MOUSE_MOVE, mouseMovehandler);
             resizeElement(null);
-            drawRectInCenter()
+            drawRectInCenter();
+            addEventsToRect();
         }
 
         private function mouseMovehandler(e:MouseEvent):void {
         }
+
+        private function addEventsToRect():void {
+            if (rect) {
+                rect.addEventListener(MouseEvent.MOUSE_DOWN, rectMouseDownHandler);
+                rect.addEventListener(MouseEvent.MOUSE_UP, rectMouseUpHandler);
+            } else {
+                setTimeout(function():void {
+                    addEventsToRect()
+                }, 1000)
+            }
+        }
+
+        private function rectMouseDownHandler(e:MouseEvent):void {
+            rect.startDrag(false, new Rectangle(0, 0, stage.stageWidth - rect.width, stage.stageHeight - rect.height))
+        }
+
+        private function rectMouseUpHandler(e:MouseEvent):void {
+            rect.stopDrag();
+        }
+
 
         private function resizeElement(e:Event):void {
             if (rect)
@@ -48,7 +71,7 @@ package com {
         }
 
         private function drawRectInCenter():void {
-            rect = new Shape();
+            rect = new Sprite();
             rect.graphics.beginFill(0xFF0000);
             rect.graphics.drawRect(0, 0, 100, 100);
             rect.graphics.endFill();
